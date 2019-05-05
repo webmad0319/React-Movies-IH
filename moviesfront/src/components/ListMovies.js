@@ -11,8 +11,19 @@ export default class ListMovies extends Component {
     this.api = new Api()
   }
 
+  componentDidMount(){
+    this.api.allMovies()
+    .then(movies=>{
+      console.log(movies)
+      this.setState({
+        movies: movies
+      })
+    })
+  }
+
 
   render() {
+    if(this.state.movies){
     console.log(this.state.movies)
     return (
       <div>
@@ -27,18 +38,17 @@ export default class ListMovies extends Component {
         })
         }
       </div>
-    );
+    )
+  }else{
+    return (
+      <div>
+        <h1>esperando</h1>
+      </div>
+    )
+  }
   }
 
 
 
-  componentDidMount(){
-    this.api.allMovies()
-    .then(movies=>{
-      console.log(movies)
-      this.setState({
-        movies: movies
-      })
-    })
-  }
+  
 }
