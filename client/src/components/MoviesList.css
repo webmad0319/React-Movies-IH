@@ -1,0 +1,10 @@
+.MoviesList{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.MoviesList .Movie{
+  margin: 2rem;
+}

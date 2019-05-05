@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import MoviesService from '../services/movies.service';
+import Movie from './Movie';
+import './MoviesList.css';
 
 export default class MoviesList extends Component {
   constructor(){
@@ -24,8 +26,10 @@ export default class MoviesList extends Component {
 
   render() {
     return (
-      <div>
-        {JSON.stringify(this.state.movies)}
+      <div className="MoviesList">
+        {
+          this.state.movies.map((movie, index) => <Movie key={index} {...movie}/>)
+        }
       </div>
     )
   }
