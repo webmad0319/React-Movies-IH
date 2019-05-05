@@ -7,7 +7,8 @@ const Movie = require("../models/Movie");
 router.get('/all', (req, res, next) => {
   Movie
     .find()
-    .then(allTheMovies => res.json(allTheMovies))
+    .then(allTheMovies => 
+      res.json(allTheMovies))
 });
 
 router.get('/one/:id', (req, res, next) => {
@@ -63,6 +64,7 @@ router.post('/edit/:id', (req,res) => {
   
   Movie.updateOne(req.params.id, req.body)
   .then((movie) =>{
+    console.log(movie)
     res.json(movie);
   })
   .catch((err) =>{
