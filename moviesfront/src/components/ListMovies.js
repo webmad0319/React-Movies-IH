@@ -6,7 +6,7 @@ export default class ListMovies extends Component {
   constructor(props) {
     super(props);
     this.state = {
-     movies: []
+     movies: null
     }
     this.api = new Api()
   }
@@ -16,6 +16,7 @@ export default class ListMovies extends Component {
     .then(movies=>{
       console.log(movies)
       this.setState({
+        ...this.state,
         movies: movies
       })
     })
@@ -23,9 +24,9 @@ export default class ListMovies extends Component {
 
 
   render() {
-    if(this.state.movies){
+    // if(this.state.data){
     console.log(this.state.movies)
-    return (
+    return (this.state.movies && 
       <div>
         {this.state.movies.map((movie,idx) => {
           return (
@@ -39,13 +40,7 @@ export default class ListMovies extends Component {
         }
       </div>
     )
-  }else{
-    return (
-      <div>
-        <h1>esperando</h1>
-      </div>
-    )
-  }
+    
   }
 
 
