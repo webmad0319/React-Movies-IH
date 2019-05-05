@@ -1,0 +1,11 @@
+.listado {
+    background-color: transparent;
+    list-style-type: none;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 2% 3%;
+  
+}
+.listado h5 {
+    margin: 20px;
+}
