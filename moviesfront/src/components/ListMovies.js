@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-import Api from "../API/MovieApi";
+import Api from "./MovieApi";
+import axios from "axios";
 
 export default class ListMovies extends Component {
   constructor(props) {
     super(props);
     this.state = {
-     movies: null
+     movies: []
     }
     this.api = new Api()
   }
@@ -18,6 +19,7 @@ export default class ListMovies extends Component {
       this.setState({
         ...this.state,
         movies: movies
+        
       })
     })
   }

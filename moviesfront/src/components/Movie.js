@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from "axios";
 import EditMovie from './EditMovie';
 import { Link } from 'react-router-dom';
+import Api from "./MovieApi";
+
 
 
 export default class Movie extends Component {
@@ -10,19 +12,20 @@ export default class Movie extends Component {
     this.state = {
       movie: {},
     }
+    this.api = new Api()
+
   }
 
   componentDidMount(){
-    axios
-        .get(`http://localhost:5000/one/${this.props.match.params.id}`)
-        .then(movie => {
-          console.log(this.props.match.params.id)
-            const oneMovie = movie.data 
-            this.setState({
-                ...this.state,
-                movie: oneMovie
-            })
-        })
+    this.api.oneMovie()
+    .then(movie=>{
+      console.log(movie)
+      this.setState({
+        ...this.state,
+        movie: movie
+        
+      })
+    })
   }
  
 
@@ -38,7 +41,7 @@ export default class Movie extends Component {
   // }
 
   render() {
-    var movie= this.state.movie
+    const movie= this.state.movie
     return (
       <div className="movie">
             <div>
