@@ -1,40 +1,39 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
+import MovieApi from "../API/MovieApi";
 
 export default class ListMovies extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      ListMovies: []
-    };
+     data: []
+    }
+    this.auxServices = new MovieApi();
+    this.getInfo();
   }
 
-  componentDidMount() {
-    axios
-    .get("http://localhost:5000/all")
-    .then(allMovies => {
-      const allMoviesPay = allMovies.data;
-
+  getInfo = ()=>{
+    this.auxServices.allMovies()
+    .then((data)=>{
+      console.log(this.data)
       this.setState({
         ...this.state,
-        ListMovies: allMoviesPay
-      });
-    });
+        data:data.data})
+    })
   }
 
   render() {
+    console.log(this.state.data)
     return (
       <div>
-        {this.state.ListMovies.map((movie,idx) => {
+        {this.state.data.map((movie,idx) => {
           return (
             <div key={idx}>
           
             <img alt="" src={movie.image_url}></img>
             <Link className="" to={`/${movie._id}`}>{movie.title}</Link>
             </div>
-            
-           
           )
         })
         }

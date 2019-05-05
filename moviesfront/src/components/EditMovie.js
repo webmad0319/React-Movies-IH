@@ -16,8 +16,9 @@ class EditMovie extends Component {
 
 
   componentDidMount(){
+    const movie= this.state.movie;
 
-    axios.put(`http://localhost:5000/edit/${this.props.match.params._id}`)
+    axios.put(`http://localhost:5000/edit/${this.props.match.params._id}`,{movie})
     .then(movie => {
       const oneMovie = movie.data
       console.log(oneMovie)
