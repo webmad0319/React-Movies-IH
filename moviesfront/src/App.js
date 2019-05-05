@@ -21,7 +21,6 @@ function App() {
           <Route exact path='/new' component={NewMovie} />
           <Route exact path='/:id' component={Movie} />
           <Route exact path='/edit/:_id' component={EditMovie}/>
-         
         </Switch>
         <footer>
           Copyright Ironhack

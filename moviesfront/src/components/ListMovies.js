@@ -7,7 +7,7 @@ export default class ListMovies extends Component {
   constructor(props) {
     super(props);
     this.state = {
-     movies: []
+     movies: null
     }
     this.api = new Api()
   }
