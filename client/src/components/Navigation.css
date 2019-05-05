@@ -1,0 +1,22 @@
+.Navigation{
+  background-color: hsl(210, 75%, 60%);
+}
+
+.Navigation ul{
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Navigation ul li{
+  padding: 1rem 2rem;
+}
+.Navigation ul li:hover{
+  background-color: hsl(210, 75%, 45%);
+}
+
+.Navigation ul li a{
+  color: #FAFAFA;
+  text-decoration: none;
+}

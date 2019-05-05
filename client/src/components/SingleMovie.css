@@ -1,0 +1,56 @@
+.SingleMovie{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+}
+
+.SingleMovie .img-block{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.SingleMovie .img-block img{
+  margin-right: 2rem;
+}
+
+.SingleMovie .actions{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.SingleMovie .actions .button{
+  border: 1px solid #FAFAFA;
+  padding: 1rem 2rem;
+  background-color: hsl(0, 50%, 50%);
+  color: #FAFAFA;
+  border-radius: .5rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.SingleMovie .actions .button:hover{
+  background-color: hsl(0, 50%, 35%);
+}
+
+.SingleMovie .actions .button.button-update{
+  background-color: hsl(20, 50%, 50%);
+}
+
+.SingleMovie .actions .button.button-update:hover{
+  background-color: hsl(20, 50%, 35%);
+}
+
+.SingleMovie .details{
+  font-size: 1.8rem;
+  color: #777;
+}
+
+.SingleMovie .details:not(:last-child)::after{
+  content: '|';
+  margin-left: .5rem;
+  color: #7776;
+}
