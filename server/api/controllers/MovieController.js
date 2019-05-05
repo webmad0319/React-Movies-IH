@@ -23,9 +23,38 @@ module.exports = {
       .then(movie => res.json(movie))
       .catch(err => console.error(err));
   },
-  create: (req, res) => res.json({hello: 3}),
-  'delete': (req, res) => res.json({hello: 4}),
-  update: (req, res) => res.json({hello: 5}),
+  create: function(req, res){
+    sails.models.movie.create({...req.body})
+      .then(movie => res.json({
+        movie: movie,
+        message: 'Movie created successfully',
+      }))
+      .catch(err => console.error(err));
+  },
+  'delete': function(req, res){
+    sails.models.movie.destroyOne({
+      _id: req.params.id
+    })
+    .then(movie => res.json({
+      movie,
+      message: 'Movie deleted successfully'
+    }))
+  },
+  update: function(req, res){
+    sails.models.movie.updateOne({
+      _id: req.params.id
+    })
+    .set({
+      ...req.body
+    })
+    .then(movie => {
+      res.json({
+        movie: movie,
+        message: 'Movie updated successfully'
+      })
+    })
+    .catch(err => console.error(err));
+  },
 
 };
 

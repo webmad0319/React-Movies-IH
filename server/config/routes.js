@@ -14,7 +14,7 @@ module.exports.routes = {
   'GET /one/:id':'MovieController.getById',
   'POST /new':'MovieController.create',
   'DELETE /delete/:id':'MovieController.delete',
-  'UPDATE /update/:id':'MovieController.update',
+  'PUT /update/:id':'MovieController.update',
 
 
 };
