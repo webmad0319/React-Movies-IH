@@ -13,4 +13,10 @@ export default class MoviesService{
       .then(res => res.data)
       .catch(err => console.error(err));
   }
+
+  getById(id){
+    return this.service.get('/one/'+id)
+      .then(res => res.data)
+      .catch(err => console.error(err));
+  }
 }

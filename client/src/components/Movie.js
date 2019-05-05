@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import './Movie.css';
 import {Link} from 'react-router-dom';
+import MoviesService from '../services/movies.service';
 
 export default class Movie extends Component {
+
   render() {
     return (
       <div className="Movie">

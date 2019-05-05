@@ -1,0 +1,21 @@
+.SingleMovie{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+}
+
+.SingleMovie img{
+  margin-right: 2rem;
+}
+
+.SingleMovie .details{
+  font-size: 1.8rem;
+  color: #777;
+}
+
+.SingleMovie .details:not(:last-child)::after{
+  content: '|';
+  margin-left: .5rem;
+  color: #7776;
+}
