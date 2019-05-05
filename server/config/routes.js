@@ -9,6 +9,11 @@
  */
 
 module.exports.routes = {
+  'GET /all':'MovieController.getAll',
+  'GET /one/:id':'MovieController.getById',
+  'POST /new':'MovieController.create',
+  'DELETE /delete/:id':'MovieController.delete',
+  'UPDATE /update/:id':'MovieController.update',
 
 
 };
