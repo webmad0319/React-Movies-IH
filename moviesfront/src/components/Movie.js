@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import axios from "axios";
-import EditMovie from './EditMovie';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
+import './Movie.css';
 
 import Api from "./MovieApi";
 
@@ -76,7 +75,6 @@ export default class Movie extends Component {
             <p>{movie.genre}</p>
             <Link to={`/edit/${movie._id}`}><button>Edit</button></Link>
             <button onClick={() => this.clearMovie()}>Delete Movie</button>
-            
             </div>   
       </div>
        )

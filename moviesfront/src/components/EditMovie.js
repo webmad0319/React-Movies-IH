@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { Redirect } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import Api from './MovieApi';
 
 
@@ -74,7 +71,7 @@ class EditMovie extends Component {
         <br /><br />
         <label for="rate">Rate:</label>
         <br/>
-        <input type="text" name="rate" value={this.state.movie.rate} onChange={ e => this.handleChange(e)}/>
+        <input type="number" name="rate" value={this.state.movie.rate} onChange={ e => this.handleChange(e)}/>
         <br /><br />
         <label for="image_url">Image:</label>
         <br/>

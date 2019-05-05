@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import Api from "./MovieApi";
-import axios from "axios";
+import './ListMovies.css';
 
 export default class ListMovies extends Component {
   constructor(props) {
@@ -32,10 +32,13 @@ export default class ListMovies extends Component {
       <div>
         {this.state.movies.map((movie,idx) => {
           return (
-            <div key={idx}>
-          
+            <div key={idx} className="boxMovie">
+          <div>
             <img alt="" src={movie.image_url}></img>
+            </div>
+            <div>
             <Link className="" to={`/${movie._id}`}>{movie.title}</Link>
+            </div>
             </div>
           )
         })

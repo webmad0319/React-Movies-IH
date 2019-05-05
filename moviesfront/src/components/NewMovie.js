@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from "axios";
 import { Redirect } from 'react-router-dom';
 import Api from './MovieApi';
 
@@ -50,6 +49,7 @@ handleChange = (event) => {
     console.log(this.state.title)
     return (
       <div>
+        <hr></hr>
       <form onSubmit={this.handleFormSubmit}>
         <label for="title">Title:</label>
         <br />

@@ -1,0 +1,6 @@
+.movie {
+  display: flex;
+}
+.movie img {
+  width: 400px;
+}
