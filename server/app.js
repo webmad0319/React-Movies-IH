@@ -8,7 +8,7 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
-var cors = require('cors')
+const cors = require('cors');
 
 mongoose
   .connect('mongodb://localhost/server', {useNewUrlParser: true})
@@ -29,7 +29,18 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cors());
+
+//CORS configuration
+const whiteList = ["http://localhost:3000","http://localhost:5000","http://localhost"]
+const corsOptions = {
+origin: (origin, cb) => {
+const originIsWhitelisted = whiteList.includes(origin);
+cb(null, originIsWhitelisted)
+},
+credentials: true
+}
+
+app.use(cors(corsOptions));
 
 // Express View engine setup
 
