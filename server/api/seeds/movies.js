@@ -1,4 +1,4 @@
-[
+module.exports = [
   {
     title: "The Shawshank Redemption",
     year: 1994,

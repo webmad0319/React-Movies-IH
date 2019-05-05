@@ -9,6 +9,7 @@
  */
 
 module.exports.routes = {
+  'GET /seed':'MovieController.seedDB',
   'GET /all':'MovieController.getAll',
   'GET /one/:id':'MovieController.getById',
   'POST /new':'MovieController.create',
