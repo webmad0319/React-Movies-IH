@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from "axios";
 import { Redirect } from 'react-router-dom';
+import Api from './MovieApi';
+
 
 
 class NewMovie extends React.Component {
@@ -15,8 +17,10 @@ class NewMovie extends React.Component {
     duration: "",
     redirect: false,
   }
+  this.api = new Api()
 }
   
+
 handleFormSubmit = (event) => {
   event.preventDefault();
   const title = this.state.title;
@@ -26,13 +30,12 @@ handleFormSubmit = (event) => {
     const year= this.state.year;
     const duration= this.state.duration;
 
-
-  axios.post("http://localhost:5000/new", {title, director, rate, image_url, year, duration})
-  .then( () => {
+    this.api.newMovie(title, director, rate, image_url, year, duration)
+    .then( () => {
       // this.props.getData();
       this.setState({redirect: true, title: "", director: "", rate: "", image_url: "", year: "", duration: ""});
   })
-  .catch( error => console.log(error) )
+  
 }
 
 handleChange = (event) => {  

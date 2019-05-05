@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import Api from './MovieApi';
 
 
 
@@ -12,23 +13,39 @@ class EditMovie extends Component {
         movie: {}
         
     }
+    this.api = new Api()
   }
 
 
   componentDidMount(){
-    const movie= this.state.movie;
-
-    axios.put(`http://localhost:5000/edit/${this.props.match.params._id}`,{movie})
-    .then(movie => {
-      const oneMovie = movie.data
-      console.log(oneMovie)
-
+    this.api.oneMovie(this.props.match.params.id)
+    .then(movie=>{
+      console.log(movie)
       this.setState({
-          ...this.state,
-          movie: oneMovie
+        ...this.state,
+        movie: movie
+        
+      })
     })
-  })
-}
+  }
+
+  handleFormSubmit = (event) => {
+    event.preventDefault();
+       const title = this.state.title;
+      const director = this.state.director;
+      const rate= this.state.rate;
+      const image_url= this.state.image_url;
+      const year= this.state.year;
+      const duration= this.state.duration;
+      const id = this.state.movie._id
+  
+      this.api.editMovie(title, director, rate, image_url, year, duration, id)
+      .then( () => {
+        // this.props.getData();
+        this.setState({redirect: true, title: "", director: "", rate: "", image_url: "", year: "", duration: ""});
+    })
+    
+  }
 
   handleChange = (event) => {  
     const {name, value} = event.target;
@@ -37,7 +54,7 @@ class EditMovie extends Component {
 
 
   render(){
-    console.log(this.state.movie, this.props.match.params,"editar")
+    console.log(this.state.movie,"editar")
     return (
       <div>
         <hr />

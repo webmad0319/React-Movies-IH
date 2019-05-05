@@ -18,13 +18,25 @@ export default class MovieApi{
         .catch(err => console.log(err))
     }
 
-  oneMovie() {
+  oneMovie(id) {
       return this.service 
-         .get(`/one/${this.props.match.params.id}`)
+         .get(`/one/${id}`)
          .then(response => {console.log(response, "hola")
          return response.data})
          .catch(err => console.log(err))
          }
-    
+
+
+  newMovie(title, director, rate, image_url, year, duration) {
+    return this.service
+    .post('/new',{title, director, rate, image_url, year, duration} )  
+  .catch( error => console.log(error) )
+}
+
+  editMovie(title, director, rate, image_url, year, duration, id) {
+    return this.service
+    .put(`/edit/${id}`,{title, director, rate, image_url, year, duration} )
+    .catch( error => console.log(error) )
+}
 }
 

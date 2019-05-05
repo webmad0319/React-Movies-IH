@@ -17,7 +17,7 @@ export default class Movie extends Component {
   }
 
   componentDidMount(){
-    this.api.oneMovie()
+    this.api.oneMovie(this.props.match.params.id)
     .then(movie=>{
       console.log(movie)
       this.setState({
