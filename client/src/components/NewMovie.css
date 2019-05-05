@@ -1,0 +1,42 @@
+.NewMovie{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.NewMovie .form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.NewMovie .form .form-group{
+  margin: .5rem;
+  padding: .5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.NewMovie .form .form-group label{
+  margin-right: 1rem;
+}
+
+.NewMovie .form .form-group input{
+  padding: .5rem;
+}
+
+.NewMovie .form button{
+  padding: 1rem;
+  border: 1px solid #FAFAFA;
+  background-color: hsl(90, 50%, 35%);
+  color: #FAFAFA;
+  cursor: pointer;
+  border-radius: .5rem;
+}
+
+.NewMovie .form button:hover{
+  background-color: hsl(90, 50%, 15%);
+}

@@ -13,7 +13,7 @@ function App() {
       <Navigation />
       <Switch>
         <Route exact path="/" component={MoviesList}/>
-        <Route exact path="/new" component={NewMovie}/>
+        <Route exact path="/new/:id?" component={NewMovie}/>
         <Route path="/movies/:id" component={SingleMovie}/>
         <Route render={() => <Redirect to="/"/>}/>
       </Switch>
