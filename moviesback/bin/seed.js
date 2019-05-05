@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Movie = require("../models/Movie");
 
 mongoose
- .connect("mongodb://localhost/movie-page-backend", {useNewUrlParser: true})
+ .connect("mongodb://localhost/moviesback", {useNewUrlParser: true})
  .then(x => {
    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
  })

@@ -1,7 +1,6 @@
 const express = require("express");
 const passport = require('passport');
 const router = express.Router();
-const User = require("../models/User");
 const Movie = require("../models/Movie");
 
 router.get('/all', (req, res, next) => {
@@ -38,7 +37,7 @@ router.post('/new', (req, res) => {
   })
 });
 
-router.post('/delete/:id', (req, res) => {
+router.delete('/delete/:id', (req, res,next) => {
   const id = req.params.id;
   Movie.findByIdAndRemove(id)
   .then((movie) =>{
@@ -50,19 +49,10 @@ router.post('/delete/:id', (req, res) => {
 });
 
 
-router.post('/edit/:id', (req,res) => {
-  const movie = {
-    title: req.body.title,
-    year: req.body.year,
-    director: req.body.director,
-    duration: req.body.duration,
-    genre: req.body.genre,
-    rate: req.body.rate,
-    image_url: req.body.image_url,
-    
-  }
+router.put('/edit/:id', (req,res) => {
+const id = req.params.id
   
-  Movie.updateOne(req.params.id, req.body)
+  Movie.findByIdAndUpdate(id, req.body)
   .then((movie) =>{
     console.log(movie)
     res.json(movie);
