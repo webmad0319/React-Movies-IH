@@ -31,12 +31,13 @@ class EditMovie extends Component {
   handleFormSubmit = (event) => {
     console.log(this.state.title)
     event.preventDefault();
-       const title = this.state.movie.title;
-      const director = this.state.movie.director;
-      const rate= this.state.movie.rate;
-      const image_url= this.state.movie.image_url;
-      const year= this.state.movie.year;
-      const duration= this.state.movie.duration;
+      //  const title = this.state.movie.title;
+      // const director = this.state.movie.director;
+      // const rate= this.state.movie.rate;
+      // const image_url= this.state.movie.image_url;
+      // const year= this.state.movie.year;
+      // const duration= this.state.movie.duration;
+      const {title,director,rate,image_url,year,duration} = this.state.movie
       const id = this.props.match.params._id
   
       this.api.editMovie(title, director, rate, image_url, year, duration, id)
@@ -90,7 +91,7 @@ class EditMovie extends Component {
         <br/>
         <input type="text" name="duration" value={this.state.movie.duration} onChange={ e => this.handleChange(e)}/>
         <br /><br />    
-        <input type="submit" value="ADD" />
+        <input type="submit" value="EDIT" />
         
       </form>
       </div>

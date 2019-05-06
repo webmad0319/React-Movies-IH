@@ -22,12 +22,13 @@ class NewMovie extends React.Component {
 
 handleFormSubmit = (event) => {
   event.preventDefault();
-  const title = this.state.title;
-    const director = this.state.director;
-    const rate= this.state.rate;
-    const image_url= this.state.image_url;
-    const year= this.state.year;
-    const duration= this.state.duration;
+  // const title = this.state.title;
+  //   const director = this.state.director;
+  //   const rate= this.state.rate;
+  //   const image_url= this.state.image_url;
+  //   const year= this.state.year;
+  //   const duration= this.state.duration;
+    const {title,director,rate,image_url,year,duration} = this.state
 
     this.api.newMovie(title, director, rate, image_url, year, duration)
     .then( () => {
