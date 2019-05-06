@@ -37,7 +37,7 @@ export default class ExtendedCard extends Component {
   }
 
   update() {
-    this.Services.updateOne(this.props.match.params.id, this.state)
+    this.Services.updateOne(this.props.match.params.id, this.state.data)
       .then(
         this.setState({
         ...this.state,
@@ -47,10 +47,11 @@ export default class ExtendedCard extends Component {
   }
 
   componentDidMount() {
-    this.Services.oneData(this.props.match.params.id).then(data => {
+    let id = this.props.match.params.id
+    this.Services.oneData(id).then(data => {
       this.setState({
         ...this.state,
-        data: data.data
+        data: data
       });
     });
   }
@@ -105,7 +106,7 @@ export default class ExtendedCard extends Component {
           value={data.rate}
           onChange={e => this.dataUpdate(e.target.value, "rate")}
         />
-        <button onClick={() => this.update()}></button>
+        <button onClick={() => this.update()}>Update Movie</button>
       </div>
     );
       }

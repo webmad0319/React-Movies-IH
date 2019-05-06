@@ -4,7 +4,7 @@ export default class Services {
 
   constructor() {
     this.service = axios.create({
-      baseUrl: `http://localhost:5000`,
+      baseURL: `http://localhost:5000/`,
       withCredentials: true
     })
   }
@@ -17,7 +17,7 @@ export default class Services {
 
   oneData = (id) => {
     return this.service
-      .get(`/one/:${id}`)
+      .get(`/one/${id}`)
       .then(data => data.data)
   }
 
@@ -28,11 +28,11 @@ export default class Services {
 
   updateOne = (id, data) => {
     return this.service
-      .put(`/update/:${id}`, data)
+      .put(`/update/${id}`, data)
   }
 
-  daleteOne = (id) => {
+  deleteOne = (id) => {
     return this.service
-      .delete(`/delete/:${id}`)
+      .delete(`/delete/${id}`)
   }
 }

@@ -9,8 +9,9 @@ export default class Home extends Component {
     this.state = {
       data: []
     };
-    this.Services = new Services();
   }
+
+  Services = new Services();
 
   componentDidMount() {
     this.Services.all().then(data => {
@@ -22,11 +23,10 @@ export default class Home extends Component {
   }
 
   render() {
-    console.log(this.state.data)
       return (
         <div>
-          {this.state.data.map(dat => {
-            return <Card {...dat} />;
+          {this.state.data.map((dat, idx) => {
+            return <Card key={idx} {...dat} />;
           })}
         </div>
       );

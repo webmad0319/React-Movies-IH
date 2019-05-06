@@ -14,7 +14,7 @@ router.get('/all', (req, res, next) => {
 
 router.get('/one/:id', (req, res, next) => {
   Movie.findById(req.params.id).then(data => {
-    res.json({data});
+    res.json(data);
   })
   .catch((err)=>{
     console.log(err)
@@ -25,9 +25,12 @@ router.post('/new', (req, res, next) => {
   Movie.create({
     title: req.body.title,
     year: req.body.year,
+    director: req.body.director,
     duration: req.body.duration,
     rate: req.body.rate,
     image_url: req.body.image_url
+  }).then(data => {
+    res.json(data);
   })
   .catch((err)=>{
     console.log(err)
@@ -40,12 +43,13 @@ router.put('/update/:id', (req, res, next) => {
     {
     title: req.body.title,
     year: req.body.year,
+    director: req.body.director,
     duration: req.body.duration,
     rate: req.body.rate,
     image_url: req.body.image_url
   }
   ).then(data => {
-    res.json({data});
+    res.json(data);
   })
   .catch((err)=>{
     console.log(err)
@@ -54,7 +58,7 @@ router.put('/update/:id', (req, res, next) => {
 
 router.delete('/delete/:id', (req, res, next) => {
   Movie.findByIdAndDelete(req.params.id).then(data => {
-    res.json({data});
+    res.json(data);
   })
   .catch((err)=>{
     console.log(err)

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import "./New.css";
 import Services from "../tools/Services";
 
@@ -7,7 +7,7 @@ export default class New extends Component {
   constructor() {
     super();
     this.state = {
-      data: [],
+      data: {},
       created: false,
       id: ""
     };
@@ -17,12 +17,13 @@ export default class New extends Component {
   dataUpdate(val, key) {
     this.setState({
       ...this.state,
-      data: {...data, [key]: val}
+      data: {...this.state.data, [key]: val}
     });
   }
 
-  update() {
-    this.Services.newOne(this.state)
+  create() {
+    console.log(this.state.data)
+    this.Services.newOne(this.state.data)
       .then(data => {
         this.setState({
           ...this.state,
@@ -75,8 +76,8 @@ export default class New extends Component {
           value={data.rate}
           onChange={e => this.dataUpdate(e.target.value, "rate")}
         />
-        <button onClick={() => this.update()}></button>
+        <button onClick={() => this.create()}>Create Movie</button>
       </div>
-        }
-    );
+          )}}
+    
 }
