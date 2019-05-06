@@ -1,0 +1,36 @@
+h1 {
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.movie-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  padding: 10px;
+  font-size: 15px;
+  background-color: #282c34;
+  color: white;
+  font-weight: bold;
+  margin: 15px auto;
+}
+
+label, .input-form {
+  margin: 5px;
+}
+
+.input-form {
+  height: 20px;
+  width: 500px;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-msg {
+  color: red;
+  margin-bottom: 15px;
+}
