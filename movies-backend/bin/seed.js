@@ -1,4 +1,16 @@
-[
+const mongoose = require("mongoose");
+const Movie = require("../models/Movie");
+
+mongoose
+  .connect('mongodb://localhost/movies-backend', { useNewUrlParser: true })
+  .then(x => {
+    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
+  })
+  .catch(err => {
+    console.error('Error connecting to mongo', err)
+  });
+
+let movies = [
   {
     title: "The Shawshank Redemption",
     year: 1994,
@@ -15,7 +27,7 @@
     duration: "2h 55min",
     genre: ["Crime", "Drama"],
     rate: 9.2,
-    image_url:"https://images-eu.ssl-images-amazon.com/images/I/41+CVQ1WsdL._AC_US200_.jpg"
+    image_url: "https://images-eu.ssl-images-amazon.com/images/I/41+CVQ1WsdL._AC_US200_.jpg"
   },
   {
     title: "The Godfather: Part II",
@@ -24,7 +36,7 @@
     duration: "3h 22min",
     genre: ["Crime", "Drama"],
     rate: 9.0,
-    image_url:"http://e-cdn-images.deezer.com/images/cover/106df58fc3617f5ba47f9631e3a8abc4/200x200-000000-80-0-0.jpg"
+    image_url: "http://e-cdn-images.deezer.com/images/cover/106df58fc3617f5ba47f9631e3a8abc4/200x200-000000-80-0-0.jpg"
   },
   {
     title: "The Dark Knight",
@@ -42,7 +54,7 @@
     duration: "1h 36min",
     genre: ["Crime", "Drama"],
     rate: 8.9,
-    image_url:"https://dcmetrotheaterarts.com/wp-content/uploads/2014/11/DCMetroArts-Square-12-Angry-Men-copy1.jpg"
+    image_url: "https://dcmetrotheaterarts.com/wp-content/uploads/2014/11/DCMetroArts-Square-12-Angry-Men-copy1.jpg"
   },
   {
     title: "Schindler\"s List",
@@ -89,5 +101,16 @@
     rate: 8.8,
     image_url: "http://images-cf.localist.com/photos/268373/big_square/838544343e31b203ca8e60a9e46f59ebd648f40b.jpg"
   }
-  
-]
+];
+
+Movie.deleteMany()
+  .then(() => {
+    return Movie.create(movies)
+  })
+  .then(() => {
+    mongoose.disconnect()
+  })
+  .catch(err => {
+    mongoose.disconnect()
+    throw err
+  })
