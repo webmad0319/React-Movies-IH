@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Api from './MovieApi';
+import { Redirect } from 'react-router-dom';
 
 
 
@@ -20,7 +21,8 @@ class EditMovie extends Component {
       console.log(movie, "did")
       this.setState({
         ...this.state,
-        movie: movie
+        movie: movie,
+        redirect: false,
         
       })
     })
@@ -40,7 +42,7 @@ class EditMovie extends Component {
       this.api.editMovie(title, director, rate, image_url, year, duration, id)
       .then( () => {
         // this.props.getData();
-        this.setState({title: "", director: "", rate: "", image_url: "", year: "", duration: ""});
+        this.setState({redirect: true, title: "", director: "", rate: "", image_url: "", year: "", duration: ""});
     })
     
   }
@@ -56,6 +58,9 @@ class EditMovie extends Component {
 
 
   render(){
+    if (this.state.redirect) {
+      return <Redirect to='/' />
+    }
     console.log(this.state.movie,"editar")
     return (this.state.movie && 
       <div>

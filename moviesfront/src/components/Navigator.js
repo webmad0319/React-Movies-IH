@@ -6,8 +6,13 @@ export default class Navigator extends Component {
   render() {
     return (
       <div clasName="Navi">
-            <Link to="/">HOME</Link>    
-            <Link to="/new">New Movie</Link>
+
+            <div>
+              <Link to="/">HOME</Link>  
+            </div>  
+            <div>
+              <Link to="/new">New Movie</Link>
+            </div>
           
       </div>
     )
