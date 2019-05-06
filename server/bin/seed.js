@@ -1,4 +1,17 @@
-[
+const mongoose = require('mongoose');
+const Movie = require('../models/Movie');
+
+const dbName = 'Movies';
+mongoose
+  .connect(`mongodb://localhost/${dbName}`, {useNewUrlParser: true})
+  .then(x => {
+    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
+  })
+  .catch(err => {
+    console.error('Error connecting to mongo', err)
+  });
+
+const mov = [
   {
     title: "The Shawshank Redemption",
     year: 1994,
@@ -91,3 +104,9 @@
   }
   
 ]
+
+Promise.resolve()
+  .then(() => Movie.create(mov))
+    .then(console.log(`movie added`))
+    .catch(err => console.log("An error happened:", err))
+  .then(() => mongoose.connection.close());
