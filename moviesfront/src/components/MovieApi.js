@@ -29,7 +29,7 @@ export default class MovieApi{
 
   newMovie(title, director, rate, image_url, year, duration) {
     return this.service
-    .put('/new',{title, director, rate, image_url, year, duration} )  
+    .post('/new',{title, director, rate, image_url, year, duration} )  
   .catch( error => console.log(error) )
 }
 
