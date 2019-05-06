@@ -6,8 +6,11 @@ import ExtendedCard from './components/ExtendedCard'
 import New from './components/New'
 
 
-function App() {
-  return (
+
+export default class App extends React.Component {
+
+  render() {
+    return (
     <div className="App">
       <Switch>
         <Route exact path="/" component={Home}/>
@@ -16,6 +19,5 @@ function App() {
       </Switch>
     </div>
   );
+  }
 }
-
-export default App;
